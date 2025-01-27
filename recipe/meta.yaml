@@ -6,22 +6,24 @@ package:
   version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 8f1711835779704e085e62194833fed9ac2985e398b4ceac6faf6c7f40f5d15f
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv "
   noarch: python
 
 requirements:
   host:
     - pip
-    - python <3
+    - python {{ python_min }}
   run:
-    - python <3
+    - python >={{ python_min }},<3
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - pyqi
     - pyqi.commands
