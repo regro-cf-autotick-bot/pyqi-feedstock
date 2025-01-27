@@ -18,8 +18,9 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
-    - python >={{ python_min }},<3
+    - python >={{ python_min }}
 
 test:
   requires:
@@ -39,7 +40,7 @@ test:
 
 about:
   home: https://github.com/biocore/pyqi
-  license: BSD
+  license: BSD-3-Clause
   license_family: BSD
   license_file: COPYING.txt
   summary: "pyqi: expose your interface"
